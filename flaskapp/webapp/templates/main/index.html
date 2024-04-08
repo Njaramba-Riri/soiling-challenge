@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}WeLove - Home {% endblock %}
+
+{% block content %}
+<section class="index">
+    <h1>WeLove</h1>
+    <h2>Your Personalized Toilet Training Assistant</h2>
+    <div class="highlights">
+        <p>
+            An app dedicated to transforming the lives of disabled children and their families through innovative 
+            solutions for toilet training.
+        </p>
+        <p>
+            Utilize advanced AI algorithms to analyze data related to your child's toileting 
+            habits and consequently get personalized recommendations tailored for your child's specific needs, 
+            optimizing the toilet training process.
+        </p>
+        <p> 
+            Get key metrics and receive insights into the child's toileting habits, helping to ensure steady improvement
+            and success in toilet training.
+        </p>
+        <p>
+            Receive educational resources that empower parents and caregivers with the knowledge and information 
+            they need to support their child's development.
+        </p>
+    </div>
+</section> 
+<section class="extra">
+    <div class="info">
+        <img src="{{ url_for('static', filename='images/check.png')}}" alt="">
+        <h3>Key Features:</h3>
+        <h4>1.Personalized Recommendations: </h4>
+        <p>
+            WeLove analyzes data provided by users, such as toileting habits, diet, and meal schedules, to generate personalized recommendations for effective toilet training. 
+            These recommendations are tailored to each child's unique needs and preferences, helping parents and caregivers navigate 
+            the challenges of toilet training with confidence.            
+        </p>
+        <h4>2. Educational Resources: </h4>
+        <p>
+            WeLove offers a wealth of educational resources, including articles, tips, and guides on effective toilet training 
+            techniques. Whether it's understanding toileting readiness cues or implementing positive reinforcement strategies, 
+            WeLove aims to equip users with the knowledge and information they need to support their child's development.            
+        </p>
+        <p>
+            With WeLove by your side, toilet training becomes a more manageable and rewarding experience for both parents 
+            and children. Interact with WeLove today and embark on this journey towards independence and success!.            
+        </p>
+        <button id="try" data-url="{{ url_for('main.predict') }}">Try WeLove</button>
+    </div>
+    <div class="facts">
+        <h3>Did you know? <i class="fa fa-lightbulb" id="center"></i> </h3>
+
+        <details>
+            <summary>Toilet Training Challenges</summary>
+            <p>
+                Children with autism spectrum disorder (ASD) often experience challenges with toilet training, 
+                with studies indicating that they may take longer to achieve continence compared to typically developing 
+                children.
+            </p>
+        </details>
+        <details>
+            <summary>Sensory Processing Capabilities</summary>
+            <p>
+                Research suggests that children with ASD may have difficulties recognizing and responding to bodily cues 
+                related to toileting, leading to delays in toilet training readiness.
+            </p>
+            </details>
+        <details>
+            <summary>Effectiveness of Behavioral Interventions</summary>
+            <p>
+                A study published in the Journal of Developmental and Behavioral Pediatrics found that behavioral 
+                interventions, such as applied behavior analysis (ABA), can be effective in promoting successful toilet 
+                training outcomes for children with ASD.
+            </p>
+        </details>
+        <details>
+            <summary>Use of Visual Support</summary>
+            <p>
+                According to research published in the Journal of Autism and Developmental Disorders, visual supports, 
+                such as picture schedules and social stories, have been shown to be beneficial in teaching toileting 
+                skills to children with ASD.
+            </p>
+        </details>
+        <details>
+            <summary>Reinforcement and Consistency</summary>
+            <p>
+                Studies have indicated that establishing a consistent toileting routine and providing positive 
+                reinforcement for successful toileting behaviors are key components of successful toilet training 
+                for children with ASD.
+            </p>
+        </details>    
+</section>   
+{% endblock %}
+{% block js %}
+<script>
+    var toCenter = [ '#center', '.highlighdts']    
+    var tryMe = document.getElementById("try");
+
+    tryMe.addEventListener('click', function(){
+        var url = tryMe.getAttribute("data-url");
+        window.location.href = url;
+    });
+
+    toCenter.forEach(function(center){
+        var item = document.querySelector(center);
+
+        var elementHeight = item.clientHeight;
+        var elementWidth = item.clientWidth;
+
+        var windowHeight = window.innerHeight;
+        var windowWidth = window.innerWidth;
+
+        var leftPosition = (windowWidth - elementWidth) / 2;
+        var topPosition = (windowHeight - elementHeight) / 2;
+
+        item.style.left = leftPosition + 'px';
+        item.style.top = topPosition + 'px';
+    });
+
+</script>
+{% endblock %}

@@ -1,0 +1,8 @@
+FROM python:3.10.12
+COPY . /app
+WORKDIR /app
+RUN python -m pip install pip --upgrade &&\
+    pip install -r requirements.txt 
+
+EXPOSE $PORT
+CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app

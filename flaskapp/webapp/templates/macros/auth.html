@@ -1,0 +1,43 @@
+{% macro render(form) %}
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>Account Details</legend>
+        {% for field in form %}
+            {% if field.widget.input_type != 'hidden' %}
+                {% if field.name in ('name', 'email', 'username', 'password', 'confirm') %}
+                    {% if field.type in ('StringField', 'PasswordField') %}
+                        <div class="input-field">
+                            {{ field.label(class_='label') }}
+                            {{ field(class_='input') }}
+                        </div>
+                    {% else %}
+                        <div class="input-field">
+                            {{ field.label(class_='label') }}
+                            {{ field(class_='radio') }}
+                        </div>
+                    {% endif %}
+                {% endif %}    
+            {% endif %}
+        {% endfor %}        
+    </fieldset>    
+    <fieldset>
+        <legend>Relevant Details</legend>
+        {% for field in form %}
+            {% if field.widget.input_type != 'hidden' %}
+                {% if field.name not in ('name', 'email', 'username', 'password', 'confirm') %}
+                    {% if field.type in('SelectField', 'IntegerField') %}
+                        <div class="input-field">
+                            {{ field.label(class_='label') }}
+                            {{ field(class_='input') }}
+                        </div>
+                    {% else %}
+                        <div class="input-field">
+                            {{ field.label(class_='label') }}
+                            {{ field(class_='radio') }}
+                        </div>
+                    {% endif %}
+                {% endif %}    
+            {% endif %}
+        {% endfor %} 
+    </fieldset>
+{% endmacro %}

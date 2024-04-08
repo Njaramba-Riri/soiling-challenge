@@ -1,0 +1,17 @@
+<nav id="nav">
+    <ul class="nav-items">
+        <li data-url="{{ url_for('main.index') }}">
+            WeLove
+            <i class="fa fa-people-carry-box"></i>
+        </li>
+        <li data-url="{{ url_for('main.about') }}">
+            About
+        </li>
+        <li data-url="{{ url_for('main.predict') }}">
+            Ask Austin
+        </li>
+        <li data-url="{{ url_for('auth.signup')}}">
+            <span>Sign-Up</span> <i class="fa fa-sign-in"></i>
+        </li>
+    </ul>
+</nav>

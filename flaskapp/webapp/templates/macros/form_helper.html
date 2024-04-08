@@ -1,0 +1,18 @@
+{% macro render(form) %}
+    {{ form.hidden_tag() }}
+    {% for field in form %}
+        {% if field.widget.input_type != 'hidden' %}
+            {% if field.type != 'RadioField' %}
+                <div class="input-field">
+                    {{ field.label(class_='label') }}
+                    {{ field(class_='input') }}
+                </div>
+            {% else %}
+                <div class="input-field">
+                    {{ field.label(class_='label') }}
+                    {{ field(class_='radio') }}
+                </div>
+            {% endif %} 
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

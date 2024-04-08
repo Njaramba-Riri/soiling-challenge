@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% import 'macros/auth.html' as macro %}
+
+{% block title %}WeLove - LogIn{% endblock %}
+
+{% block content %}
+<section class="auth">
+    <form action="{{ url_for('auth.login') }}" method="post" id="center">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <legend>Welcome, provide your credentials</legend>
+            {% for field in form %}
+                {% if field.widget.input_type != 'hidden' %}
+                        {% if field.type in ('StringField', 'PasswordField') %}
+                            <div class="input-field">
+                                {{ field.label(class_='label') }}
+                                {{ field(class_='input') }}
+                            </div>
+                        {% else %}
+                            <div class="input-field" style="display: flex; align-items: center; justify-content: start;
+                            flex-direction: row; gap: .5rem; padding: 0 1rem;">
+                                {{ field }}
+                                {{ field.label }}
+                                <a href="" style="margin-left: auto;">Forgot password?</a>
+                            </div>
+                        {% endif %}
+                {% endif %}    
+            {% endfor %} 
+                <button type="submit" class="ask-austin">Log In</button>
+        </fieldset> 
+        <div class="login" style="margin-top: 2rem;">
+            <p>
+                Don't have an account? 
+                <a href="{{ url_for('auth.signup') }}">Register</a>
+            </p>
+        </div>
+    </form>
+</section>
+{% endblock %}

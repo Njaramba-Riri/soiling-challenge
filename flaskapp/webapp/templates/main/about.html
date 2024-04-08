@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+
+{% block title %}WeLove - About us{% endblock %}
+
+{% block content %}
+<section class="about">
+    <figure>
+        <img src="{{ url_for('static', filename='images/net.jpg') }}">
+        <main>
+            <h3>Who is WeLove?</h3>
+        </main>
+    </figure>
+    <div class="tea">
+        <p>
+            WeLove was born out of a shared passion for making a meaningful difference in the lives of 
+            persons with disabilities (PWDs). Our journey began at KISE during a hackathon, where a domain experts, various stakeholders and a group of students 
+            came together with a common goal: to harness technology and innovation to address the challenges faced by PWDs.
+        </p><br>
+        <p>
+            Inspired by our compassion and empathy for individuals with disabilities, we embarked on a journey of exploration and discovery. 
+            Through collaborative brainstorming sessions and tireless effort, we honed in on the pressing issue of toilet 
+            training for disabled children particularly children with autism spectrum disorder (ASD). Recognizing the significant 
+            impact that effective toilet training can have on a child's independence and quality of life, we were determined to 
+            find a solution.
+        </p><br>
+        <p>
+            Driven by a commitment to making a positive impact, we embarked on a collaborative effort to harness the power of 
+            artificial intelligence and machine learning in creating our unique toilet training assistance app. 
+            Through insightful conversations and in-depth research, we gained a deep understanding of the complex needs and 
+            struggles faced by children with ASD and their caregivers during the toilet training process.
+        </p><br>
+        <p>
+            Drawing from our collective expertise and experiences, we designed WeLove to be more than just a tool—it's a beacon 
+            of hope and empowerment for families navigating the challenges of toilet training. By providing personalized 
+            recommendations, progress tracking, and educational resources, we strive to offer comprehensive support tailored 
+            to each child's unique journey.
+        </p><br>
+        <p>
+            Our team is driven by a shared mission: to transform the lives of disabled children and their families by equipping 
+            them with the tools and resources they need to succeed. With dedication, innovation, and compassion at the core of 
+            everything we do, we are committed to making a meaningful difference in the lives of those we serve.
+        </p><br>
+        <p>
+            As young professionals, we are dedicated to making a positive impact in our communities and beyond. WeLove represents 
+            our commitment to innovation, inclusivity, and compassion, and we are proud to be part of this transformative journey.
+        </p>        
+    </div>
+</section>
+<section class="values">
+    <img src="{{ url_for('static', filename='images/coaster.png') }}" alt="">
+    <h3>Our core values</h3>
+    <div class="cores">
+        <ul>
+            <h4>At WeLove, we embody:-</h4>
+            <li><i class="fa fa-heart"></i> Empathy </li>
+            <li><i class="fa fa-people-roof"></i> Inclusivity </li>
+            <li><i class="fa fa-lightbulb"></i> Innovation </li>
+            <li><i class="fa fa-people-group"></i> Collaboration </li>
+            <li><i class="fa fa-person-cane"></i> Empowerment </li>
+            <li><i class="fa fa-handshake"></i> Integrity </li>
+        </ul> 
+        <div class="core-values">
+            <details>
+                <summary>Empathy</summary>
+                <p>
+                    We believe in understanding and empathizing with the experiences and challenges faced by individuals 
+                    with disabilities and their families. By putting ourselves in their shoes, we strive to develop solutions
+                    that are truly impactful and meaningful.
+                </p>
+            </details>       
+            <details>
+                <summary>Inclusivity</summary>
+                <p>
+                    We are committed to creating an inclusive environment where everyone, regardless of ability, is valued 
+                    and respected. Our solutions are designed to be accessible and beneficial to individuals with a wide 
+                    range of disabilities.
+                </p>
+            </details>
+            <details>
+                <summary>Innovation</summary>
+                <p>
+                    We embrace innovation and creativity as drivers of positive change. Through continuous research, 
+                    development, and iteration, we seek to push the boundaries of what is possible and find new ways to 
+                    improve the lives of individuals with disabilities.
+                </p>
+            </details>
+            <details>
+                <summary>Collaboration</summary>
+                <p>
+                    We believe in the power of collaboration and teamwork. By working together with individuals, families, 
+                    caregivers, and experts in the field, we can leverage diverse perspectives and expertise to create more 
+                    effective and impactful solutions.
+                </p>
+            </details>
+            <details>
+                <summary>Empowerment</summary>
+                <p>
+                    We are dedicated to empowering individuals with disabilities to live fulfilling and independent lives. 
+                    Our solutions are designed to provide them with the tools, resources, and support they need to overcome 
+                    challenges, achieve their goals, and realize their full potential.
+                </p>
+            </details>            
+            <details>
+                <summary>Integrity</summary>
+                <p>
+                    We uphold the highest standards of integrity, honesty, and transparency in everything we do. 
+                    We are committed to earning the trust and confidence of our users, partners, and stakeholders through 
+                    ethical and responsible conduct.
+                </p>
+            </details>
+        </div>
+    </div>
+</section>
+<section class="team">
+    <h3>Our team.</h3>
+    <div class="team-cards">
+        <div class="mate" id="riri">
+            <h4 class="whoIs">Meet Riri </h4>
+            <div class="prof">
+                <img src="{{ url_for('static', filename='images/user.png')}}" alt="Riri profile picture">
+                <div class="titles">
+                    <h4>James Riri.</h4>
+                    <h5>ML Engineer</h5>
+                </div>
+            </div>
+            <div class="flex">
+                <strong>Meet Riri, our ML Engineer:</strong> 
+                <p>
+                    James is the engine behind our machine learning models, bringing them to life with precision and 
+                    expertise. With a deep understanding of algorithms and programming languages, James builds and 
+                    optimizes AI models that power our innovative solutions. His dedication to pushing the boundaries 
+                    of machine learning drives our quest for innovation.
+                </p>
+            </div>
+            <div class="socials">
+                <ul>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-medium"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="mate" id="martha">
+            <h4 class="whoIs">Meet Martha</h4>
+            <div class="prof">
+                <img src="{{ url_for('static', filename='images/user.jpg')}}" alt="Martha profile picture">
+                <div class="titles">
+                    <h4>Martha Murugi.</h4>
+                    <h5>Data Scientist</h5>
+                </div>
+            </div>
+            <div class="flex">
+                <strong>Introducing Murugi, our Data Scientist:</strong> 
+                <p>
+                    Armed with a keen analytical mind and a deep understanding of 
+                    data, Martha leads the charge in uncovering insights and patterns from complex datasets. 
+                    Her expertise in statistical analysis and machine learning algorithms enables WeLove to harness 
+                    the power of data to drive impactful decisions and solutions.
+                </p>
+            </div>
+            <div class="socials">
+                <ul>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-medium"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mate" class="jose">
+            <h4 class="whoIs">Meet Jose</h4>
+            <div class="prof">
+                <img src="{{ url_for('static', filename='images/user.png')}}" alt="Josephat profile picture">
+                <div class="titles">
+                    <h4>Josephat Onkoba.</h4>
+                    <h5>MLOps Expert</h5>
+                </div>
+            </div>
+            <div class="flex">
+                <strong>Say hello to Onkoba, our MLOps Expert:</strong> 
+                <p>
+                    With a passion for deploying machine learning models at scale, Josephat brings 
+                    extensive expertise in MLOps to the WeLove team. With his knack for optimizing machine learning 
+                    workflows and ensuring seamless integration between development and deployment pipelines, 
+                    Josephat plays a crucial role in bringing our innovative solutions to life.
+                </p>
+            </div>
+            <div class="socials">
+                <ul>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-medium"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <!-- <p>
+        Together, Josephat, Martha, and James form a dynamic and talented trio dedicated to harnessing the power of technology 
+        to make a positive impact in the lives of individuals with disabilities. With their combined expertise and passion, 
+        WeLove is poised to revolutionize the field of assistive technology and empower individuals to live their best lives.
+    </p> -->
+</section>
+{% endblock %}

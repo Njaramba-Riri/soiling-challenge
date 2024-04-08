@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% import 'macros/auth.html' as macro %}
+
+{% block title %}WeLove - Signup{% endblock %}
+
+{% block content %}
+<section class="auth" id="register">
+    <form action="{{ url_for('auth.signup') }}" method="post" id="center">
+        {{ macro.render(form) }}
+        <button type="submit" class="ask-austin">Register</button>
+        <div class="login">
+            <p>
+                Already have an account? 
+                <a href="{{ url_for('auth.login') }}">Login</a>
+            </p>
+        </div>
+    </form>
+</section>
+{% endblock %}

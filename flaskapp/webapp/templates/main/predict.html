@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% import 'macros/form_helper.html' as macro %}
+
+{% block title %}WeLove - Generate Prediction{% endblock %}
+
+{% block content %}
+<section class="austin">
+    <div class="main">
+        <div class="help">
+
+        </div>
+        <form action="{{ url_for('.predict') }}" method="post">
+            <fieldset>
+                <legend>Kindly provide details as accurately as possible.</legend>
+                {{ macro.render(form) }}   
+            </fieldset>
+             <button type="submit" class="ask-austin">Submit</button>
+        </form>        
+    </div>
+</section>
+{% endblock %}
