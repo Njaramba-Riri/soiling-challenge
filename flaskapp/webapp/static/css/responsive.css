@@ -2,27 +2,39 @@
     .nav-items li{
         padding: .5rem 0;
     }
+    .nav-items li:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .index{
-        min-height: 50vh;
+        background-position: center;
     }
     .index h1{
-        font-size: 4em;
+        font-size: 3em;
+    }
+    .index h2{
+        font-size: 1.5em;
     }
     .highlights p{
         left: initial;
         right: initial;
+        font-size: 1em;
     }
     .extra{
         grid-template-columns: 1fr;
     }
     .extra .info{
         /* width: 100%; */
+        margin-top: -4rem;
+        background-attachment: scroll;
     }
     .info button{
         bottom: auto;
     }
     .extra .facts{
         margin: 2rem 0;
+        margin-top: 4rem;
     }
     .austin .main{
         grid-template-columns: 1fr;
@@ -55,7 +67,7 @@
         grid-template-columns: auto;
     }
     .cores ul{
-        width: auto;
+        width: 300px;
         height: auto; 
         padding: 0;       
     }
@@ -63,17 +75,24 @@
         top: 0;
     }
     .cores h4{
+        position: relative;
         left: -30%;
-        top: 25%;
+        top: 30%;
         transform: rotate(-90deg);
     }
     .team .team-cards{
         grid-template-columns: auto;
         padding: 2rem 0;
     }
+    #register{
+        padding-top: 50%;
+    }
     form .input-field{
         margin: 0;
     }
+    /* form .input-field #remember{
+        display: block !important;
+    } */
     form fieldset{
         grid-template-columns: 1fr;
     }

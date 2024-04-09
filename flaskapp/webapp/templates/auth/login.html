@@ -17,10 +17,12 @@
                                 {{ field(class_='input') }}
                             </div>
                         {% else %}
-                            <div class="input-field" style="display: flex; align-items: center; justify-content: start;
-                            flex-direction: row; gap: .5rem; padding: 0 1rem;">
-                                {{ field }}
-                                {{ field.label }}
+                            <div class="input-field" style="display: flex; align-items: center; justify-content: space-between;
+                            flex-direction: row; gap: .5rem; padding: 0 1rem;" id="remember">
+                                <span>
+                                    {{ field }}
+                                    {{ field.label }}                                
+                                </span>
                                 <a href="" style="margin-left: auto;">Forgot password?</a>
                             </div>
                         {% endif %}
