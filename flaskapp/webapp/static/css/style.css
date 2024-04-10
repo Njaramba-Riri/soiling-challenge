@@ -13,7 +13,17 @@
     --quite-orange: #ff5522;
     --white: #fff;
 }
-
+*::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+}
+*::-webkit-scrollbar-track{
+    background: #fffff5;    
+}
+*::-webkit-scrollbar-thumb{
+    background: rgba(0, 0, 0, .4);
+    border-radius: 30px;
+}
 body{
     background: var(--default);
     overflow-x: hidden;
@@ -585,4 +595,35 @@ form .ask-austin{
     margin: .5rem 0;
 }
 .auth .input-field .input{
+}
+
+/* ======================== Error pages ========================== */
+.errors{
+    padding: 1rem;
+    min-height: 80vh;
+    background: linear-gradient(45deg, rgba(0, 0, 0, .8), rgba(0, 0, 0, .9)), url("../images/404.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.errors .msg{
+    position: absolute;
+    text-align: center;
+}
+.msg h2{
+    font-size: 3em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: .5rem;
+    color: var(--quite-orange);
+}
+.msg h3{
+    font-size: 2em;
+    font-family: monospace;
+    margin: .5rem;
+    color: brown;
+}
+.msg p{
+    font-size: 1.3em;
+    padding: .3rem 1rem;
+    color: var(--white);
 }

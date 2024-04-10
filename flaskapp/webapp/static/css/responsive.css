@@ -99,6 +99,16 @@
     .auth form{
         left: 0 !important;
     }
+    .msg h2{
+        font-size: 1.8em;
+    }
+    .msg h3{
+        font-size: 1.2em;
+        display: none;
+    }
+    .msg p{
+        font-size: 1em;
+    }
     footer .topaz{
         margin: 0;
     }
