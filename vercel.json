@@ -1,24 +1,23 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "flaskapp/main.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/static/(.*)",
-        "dest": "flaskapp/webapp/static/$1"
-      },
-      {
-        "src": "/templates/(.*)",
-        "dest": "flaskapp/webapp/templates/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "flaskapp/main.py"
-      }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "flaskapp/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "flaskapp/webapp/static/$1"
+    },
+    {
+      "src": "/templates/(.*)",
+      "dest": "flaskapp/webapp/templates/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "flaskapp/main.py"
+    }
+  ]
+}
