@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, TelField, SelectField, RadioField, DecimalRangeField
-from wtforms.validators import DataRequired, Optional, Length
+from wtforms.validators import DataRequired, Optional, Length, NumberRange
 
 class featuresForm(FlaskForm):
     gender = RadioField("Select Gender", validators=[DataRequired()], choices=[("Male", "Male"), ("Female", "Female")])
@@ -20,7 +20,7 @@ class featuresForm(FlaskForm):
                          choices=[(" ", "-----Select Option-----"), ("Coffee", "Coffee"), 
                                   ("Tea", "Tea"), ("Porridge", "Porridge"), ("Soft Drink", "Soft Drink"), 
                                   ("Milk", "Milk"), ("Water", "Water")])
-    temperatures = DecimalRangeField("Average temperature", validators=[DataRequired()])
+    temperatures = DecimalRangeField("Average temperature", validators=[DataRequired(), NumberRange(min=10.0, max=40.0)])
     execises = RadioField("Involved in any form of execise?", validators=[DataRequired()],
                           choices=[('Yes', "Yes"), ("No", "No")])
     medication = RadioField("Any medication taken?", validators=[DataRequired()],

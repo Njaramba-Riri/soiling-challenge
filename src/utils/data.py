@@ -8,7 +8,7 @@ from faker import Faker
 fake = Faker(locale='en-GB')
 
 
-col_names = ["client", "gender", "age", "hours_slept", "sleep_quality", "food_taken", "food_amount", "drink",
+col_names = ["client", "gender", "age", "hours_slept", "sleep_quality", "main_food_taken", "food_taken_amount", "drink",
              "temperature(deg)", "exercise", "medication", "breakfast_time", "lunch_time", "supper_time", 
              "visit_restroom", "times_visited", "avg_relieve_time(min)", "soiled"]
 
@@ -23,16 +23,16 @@ def generate_data(rows: int, columns: list = col_names):
         gender = random.choice(["Male", "Female"])
         age = round(random.normalvariate(8.0, 2.0))
         hrs_slept = round(random.gauss(7.0, 1.0))
-        if hrs_slept < 3:
-            sleep_qlt = "Worst"
-        elif hrs_slept <= 5:
-            sleep_qlt = "Worse"
-        elif hrs_slept < 7:
+        
+        if hrs_slept <= 4:
+            sleep_qlt = "Fair"
+        elif hrs_slept < 6:
             sleep_qlt = "Good"
         elif hrs_slept <= 8:
             sleep_qlt = "Excellent"
         else:
             sleep_qlt = "Concerning"
+            
         food_taken = fake.word(ext_word_list=food)
         food_amount = random.choice(["Heavy", "Normal", "Small"])
         drink = fake.word(ext_word_list=drinks)
@@ -60,7 +60,8 @@ def generate_data(rows: int, columns: list = col_names):
                     food_taken, food_amount, drink, temp, exercise, medication, 
                     breakfast_time.strftime('%H:%M'), 
                     lunch_time.strftime('%H:%M'),
-                    supper_time.strftime('%H:%M'), restroom, restroom_times, relieve_time, soiled]
+                    supper_time.strftime('%H:%M'), 
+                    restroom, restroom_times, relieve_time, soiled]
         
         data.append(row_data)
         
@@ -92,6 +93,6 @@ def save_csv(rows: int, columns: list):
 
 
 if __name__ == "__main__":    
-    samples = 28532
+    samples = 200
     columns = col_names
     save_csv(samples, columns)
