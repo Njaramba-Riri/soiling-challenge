@@ -12,6 +12,7 @@
     --ibiza: #100319;
     --quite-orange: #ff5522;
     --white: #fff;
+    --delay: .6s ease-in-out
 }
 *::-webkit-scrollbar{
     width: 6px;
@@ -29,12 +30,16 @@ body{
     overflow-x: hidden;
     position: relative;
 }
+/* ==============================Essentials ===================== */
+.form-error{
+    color: #ff5522;
+}
 /* ==============================Nav Bars ======================= */
 nav{
     position: relative;
     left: 0;
     right: 0;
-    padding: 1rem;
+    padding:  1rem;
     height: 2rem;
     background: var(--nav-background);
     z-index: 999;
@@ -50,23 +55,68 @@ nav ul{
     margin-right: auto;
     font-weight: 600;
 }
-.nav-items li:last-child{
+.nav-items  #sign{
     border: 1px solid transparent;
+    padding: .5rem 1rem;  
 }
-.nav-items li:last-child:hover{
+.nav-items  #sign:hover{
     border: 1px solid orange;
     border-radius: .2rem;
 }
-.nav-items li:last-child i{
+.nav-items #sign i{
     transition: transform .6s ease-in-out;   
 }
-.nav-items li:last-child:hover i{
+.nav-items #sign:hover i{
     transform: translateX(20%);
 }
 .nav-items li{
     cursor: pointer;
     color: palegoldenrod;
-    padding: .5rem 1rem;
+}
+.nav-items .user{
+    position: relative;
+}
+.nav-items .user #dropdown{
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+}
+.nav-items #dropdown img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.nav-items #dropdown-menu{
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    display: flex;
+    align-items: start;
+    gap: 0;
+    flex-direction: column;
+    background-color: #445066;
+    min-width: 200px;
+    overflow-x: hidden;
+}
+#dropdown-menu li{
+    width: 100%;
+    padding: .5rem;
+    
+}
+#dropdown-menu li:hover{
+    padding-left: 1rem;
+    background-color: #fff;
+    border-radius: .4rem;
+    color: #2e6de4;
+    transition: padding-left var(--delay), background-color var(--delay);
+}
+#dropdown-menu #log{
+    border-top: 1px solid magenta;
+    margin-top: 1rem;
+}
+#dropdown-menu #log:hover{
+    border: 1px solid transparent;
 }
 /* ==============================Footers ======================== */
 footer{

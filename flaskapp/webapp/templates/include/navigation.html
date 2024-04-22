@@ -1,17 +1,37 @@
 <nav id="nav">
     <ul class="nav-items">
-        <li data-url="{{ url_for('main.index') }}">
+        <li class="nav-item" data-url="{{ url_for('main.index') }}">
             WeLove
             <i class="fa fa-people-carry-box"></i>
         </li>
-        <li data-url="{{ url_for('main.about') }}">
+        <li class="nav-item" data-url="{{ url_for('main.about') }}">
             About
         </li>
-        <li data-url="{{ url_for('main.predict') }}">
+        <li class="nav-item" data-url="{{ url_for('main.predict') }}">
             Austin
         </li>
-        <li data-url="{{ url_for('auth.signup')}}">
-            <span>Sign-Up</span> <i class="fa fa-sign-in"></i>
+        {% if current_user.is_anonymous %}
+        <li class="nav-item" id="sign" data-url="{{ url_for('auth.login')}}">
+            <span>Sign-In</span> <i class="fa fa-sign-in"></i>
         </li>
+        {% else %}
+        <li class="user">
+            <span id="dropdown">
+                {{ current_user.username | title }}
+                <img src="{{ url_for('static', filename='images/user.jpg')}}" alt="">
+            </span>
+            <ul id="dropdown-menu">
+                <li class="nav-item">
+                    Profile
+                </li>
+                <li class="nav-item">
+                    Dashboard
+                </li>
+                <li class="nav-item" id="log" data-url="{{ url_for('auth.logout') }}">
+                    Log out <i class="fa fa-sign-out"></i>
+                </li>
+            </ul>
+        </li>
+        {% endif %}
     </ul>
 </nav>

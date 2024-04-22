@@ -26,7 +26,7 @@ def generate_data(rows: int, columns: list = col_names):
         
         if hrs_slept <= 4:
             sleep_qlt = "Fair"
-        elif hrs_slept < 6:
+        elif hrs_slept <= 6:
             sleep_qlt = "Good"
         elif hrs_slept <= 8:
             sleep_qlt = "Excellent"
@@ -93,6 +93,6 @@ def save_csv(rows: int, columns: list):
 
 
 if __name__ == "__main__":    
-    samples = 200
+    samples = 28532
     columns = col_names
     save_csv(samples, columns)

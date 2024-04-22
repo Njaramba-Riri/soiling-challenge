@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", (event)=>{
     const nav = document.getElementById("nav");
-    const nav_items = document.querySelectorAll(".nav-items li");
+    const nav_items = document.querySelectorAll(".nav-items .nav-item");
 
     nav_items.forEach(function(item){
         item.addEventListener('click', function(){

@@ -9,11 +9,21 @@
                         <div class="input-field">
                             {{ field.label(class_='label') }}
                             {{ field(class_='input') }}
+                            {% if field.errors %}
+                                {% for e in field.errors %}
+                                    <p class="form-error">{{ e }}</p>
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     {% else %}
                         <div class="input-field">
                             {{ field.label(class_='label') }}
                             {{ field(class_='radio') }}
+                            {% if field.errors %}
+                            {% for e in field.errors %}
+                                <p class="form-error">{{ e }}</p>
+                            {% endfor %}
+                        {% endif %}
                         </div>
                     {% endif %}
                 {% endif %}    
@@ -29,11 +39,21 @@
                         <div class="input-field">
                             {{ field.label(class_='label') }}
                             {{ field(class_='input') }}
+                            {% if field.errors %}
+                                {% for e in field.errors %}
+                                    <p class="form-error">{{ e }}</p>
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     {% else %}
                         <div class="input-field">
                             {{ field.label(class_='label') }}
                             {{ field(class_='radio') }}
+                            {% if field.errors %}
+                                {% for e in field.errors %}
+                                    <p class="form-error">{{ e }}</p>
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     {% endif %}
                 {% endif %}    

@@ -1,4 +1,11 @@
 from flask import Flask, render_template, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+
+db = SQLAlchemy()
+migrate = Migrate()
+
 
 def not_found(e):
     if request.accept_mimetypes.accept_json and not request.accept_mimetypes.accept_html:
@@ -28,6 +35,9 @@ def internal_server(e):
 def create_app(object):
     app = Flask(__name__.split('.')[0])
     app.config.from_object(object)
+    
+    db.init_app(app)
+    migrate.init_app(app, db)
     
     from .main import create_module as main_create_module
     from .auth import create_module as auth_create_module
