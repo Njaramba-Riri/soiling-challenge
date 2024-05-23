@@ -6,11 +6,17 @@
                 <div class="input-field">
                     {{ field.label(class_='label') }}
                     {{ field(class_='input') }}
+                    {% for error in field.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
                 </div>
             {% else %}
                 <div class="input-field">
                     {{ field.label(class_='label') }}
                     {{ field(class_='radio') }}
+                    {% for error in field.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
                 </div>
             {% endif %} 
         {% endif %}

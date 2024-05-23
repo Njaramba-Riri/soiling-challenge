@@ -4,8 +4,8 @@
 {% block title %}WeLove - Signup{% endblock %}
 
 {% block content %}
-<section class="auth" id="register">
-    <form action="{{ url_for('auth.signup') }}" method="post" id="center">
+<section class="auth">
+    <form action="{{ url_for('auth.signup') }}" method="post">
         {{ macro.render(form) }}
         <button type="submit" class="ask-austin">Register</button>
         <div class="login">

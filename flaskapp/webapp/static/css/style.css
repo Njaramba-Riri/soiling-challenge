@@ -13,7 +13,25 @@
     --quite-orange: #ff5522;
     --white: #fff;
     --delay: .6s ease-in-out
+    --navy: #0a192f;
+    --dark-navy: #020c1b;
+    --navy: #0a192f;
+    --light-navy: #112240;
+    --lightest-navy: #233554;
+    --navy-shadow: rgba(2,12,27,0.7);
+    --dark-slate: #495670;
+    --slate: #8892b0;
+    --light-slate: #a8b2d1;
+    --lightest-slate: #ccd6f6;
+    --white: #e6f1ff;
+    --green-tint: rgba(100,255,218,0.1);
+    --pink: #f57dff;
+    --blue: #57cbff;
+    --font-sans: 'Calibre','Inter','San Francisco','SF Pro Text',-apple-system,system-ui,sans-serif;
+    --font-mono: 'SF Mono','Fira Code','Fira Mono','Roboto Mono',monospace;
+    --fz-heading: 32px;
 }
+
 *::-webkit-scrollbar{
     width: 6px;
     height: 6px;
@@ -26,10 +44,22 @@
     border-radius: 30px;
 }
 body{
-    background: var(--default);
+    background: var(--navy);
     overflow-x: hidden;
     position: relative;
+    font-family: var(--font-mono);
+    color: var(--lightest-slate);
 }
+main{
+    margin: 0px auto;
+    width: 100%;
+    min-height: 100vh;
+}
+section{
+    margin: 0px auto;
+    padding: 100px 0;
+}
+
 /* ==============================Essentials ===================== */
 .form-error{
     color: #ff5522;
@@ -125,9 +155,11 @@ footer{
     min-height: 60vh;
     background: linear-gradient(-45deg, var(--ibiza), rgb(0, 0, 0));
     color: #fff;
-    display: grid;
-    grid-gap: 2rem;
-    grid-template-columns: 1fr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
 }
 footer .topaz{
     margin: 1rem 0;
@@ -215,11 +247,14 @@ footer .copy{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .5rem 1rem;
-    border-top: 1px solid gray;
-    margin: 0 1rem;
+    flex-direction: column-reverse;
 } 
-
+.copy p{
+    font-family: var(--font-sans);
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
 /* ==============================Templates======================= */
 /* ==============================Index ========================== */
 .index{
@@ -293,6 +328,7 @@ footer .copy{
     max-width: 400px;
     border: 1px solid seagreen;
     background: seagreen;
+    color: var(--lightest-slate);
     border-radius: .2rem;
     padding: 1rem;
     margin-top: -6rem;
@@ -317,8 +353,6 @@ footer .copy{
     padding: 0.5rem 1rem;
 }
 .info button{
-    position: absolute;
-    bottom: 5%;
     padding: .5rem 1rem;
     cursor: pointer;
     border: 1px solid var(--white);
@@ -332,7 +366,7 @@ footer .copy{
     border: 1px solid var(--ibiza);
 }
 .extra .facts{
-    background-color: rgba(231, 255, 238, .8);
+    background-color: var(--green-tint);
     padding: 1rem;
 }
 .facts h3{
@@ -486,7 +520,9 @@ figure:hover h3{
     min-height: 80vh;
 }
 .team h3{
+    text-transform: capitalize;
     text-align: center;
+    font-family: var(--font-sans);
     font-size: 3em;
     font-weight: 700;
 }
@@ -497,7 +533,7 @@ figure:hover h3{
     padding: 3rem 1rem;
 }
 .team .mate{
-    background: var(--background);
+    background: var(--navy-shadow);
     padding: 1rem;
     border-radius: .6rem;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .8);
@@ -521,7 +557,7 @@ figure:hover h3{
     gap: 1rem;
     padding: .5rem;
     margin: .5rem 0;
-    background: rgba(231, 255, 238, .2);
+    background: var(--green-tint);
     border-radius: 1rem;
 }
 .prof img{
@@ -532,10 +568,11 @@ figure:hover h3{
 }
 .prof h5{
     padding-left: .5rem;
+    font-family: var(--font-mono);
 }
 .mate .flex{
     padding: 1rem;
-    background: rgba(231, 255, 238, .2);
+    background: var(--green-tint);
     text-align: justify;
 }
 .mate .socials{
@@ -562,21 +599,24 @@ figure:hover h3{
     transform: scale(1.5);
 }
 .team p{
-    /* text-align: center; */
     margin: 1rem 0;
 }
+
 /* ======================Ask Austin==================== */
 .austin{
-    padding: 1rem;
-    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .austin .main{
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 1fr 2fr;
 }
 .austin form{
-    background: rgba(231, 255, 238, .8);
+    background: var(--green-tint);
     padding: 2rem;
+    border-radius: .5rem;
 }
 form fieldset{
     display: grid;
@@ -585,12 +625,11 @@ form fieldset{
     padding: 1rem;
 }
 fieldset legend{
-    color: #2e6de4;
+    color: var(--blue);
 }
 form .input-field{
     display: flex;
     flex-direction: column;
-    margin: 1rem 0;
 }
 .input-field .input{
     outline: none;
@@ -618,18 +657,38 @@ form .ask-austin{
     background-color: var(--ibiza);
     color: #445066;
 }
+/* =============================== Results Page ========================== */
+.result{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    -webkit-box-align: center;
+}
+.result h1{
+    font-family: var(--font-sans);
+    margin: 10px auto;
+}
+.result p{
+    font-size: large;
+}
+.result .btn{
+    color: var(--dark-navy);
+    transition: all .2s ease-in-out;
+}
+.result .btn:hover{
+    transform: translate(8px, 8px);
+    box-shadow: 3px 5px var(--lightest-slate);
+}
 /* ===============================Authentication========================== */
 .auth{
-    position: relative;
-    background: var(--background);
-    min-height: 100vh;
-    padding: 1rem;
-}
-#register{
-    padding-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .auth form{
-    background: var(--white);
+    background: var(--green-tint);
     padding: 1rem;
     max-width: 400px;
     position: relative;

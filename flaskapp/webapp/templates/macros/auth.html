@@ -1,7 +1,7 @@
 {% macro render(form) %}
     {{ form.hidden_tag() }}
-    <fieldset>
-        <legend>Account Details</legend>
+    <fieldset class="border p-2">
+        <legend class="float-none w-auto">Account Details</legend>
         {% for field in form %}
             {% if field.widget.input_type != 'hidden' %}
                 {% if field.name in ('name', 'email', 'username', 'password', 'confirm') %}
@@ -30,8 +30,8 @@
             {% endif %}
         {% endfor %}        
     </fieldset>    
-    <fieldset>
-        <legend>Relevant Details</legend>
+    <fieldset class="border p-2">
+        <legend class="float-none w-auto">Relevant Details</legend>
         {% for field in form %}
             {% if field.widget.input_type != 'hidden' %}
                 {% if field.name not in ('name', 'email', 'username', 'password', 'confirm') %}

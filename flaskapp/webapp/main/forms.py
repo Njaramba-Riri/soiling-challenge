@@ -1,6 +1,9 @@
 from flask_wtf import FlaskForm
+import phonenumbers.util
 from wtforms import StringField, IntegerField, TelField, SelectField, RadioField, DecimalRangeField
-from wtforms.validators import DataRequired, Optional, Length, NumberRange
+from wtforms.validators import DataRequired, Optional, Length, NumberRange, ValidationError
+
+import phonenumbers
 
 class featuresForm(FlaskForm):
     gender = RadioField("Select Gender", validators=[DataRequired()], choices=[("Male", "Male"), ("Female", "Female")])
@@ -21,12 +24,22 @@ class featuresForm(FlaskForm):
                                   ("Tea", "Tea"), ("Porridge", "Porridge"), ("Soft Drink", "Soft Drink"), 
                                   ("Milk", "Milk"), ("Water", "Water")])
     temperatures = DecimalRangeField("Average temperature", validators=[DataRequired(), NumberRange(min=10.0, max=40.0)])
-    execises = RadioField("Involved in any form of execise?", validators=[DataRequired()],
+    exercise = RadioField("Involved in any form of execise?", validators=[DataRequired()],
                           choices=[('Yes', "Yes"), ("No", "No")])
     medication = RadioField("Any medication taken?", validators=[DataRequired()],
                              choices=[("Yes", "Yes"), ("No", "No")])
     visit_restroom = RadioField("Visited rest room today?", validators=[DataRequired()],
                                 choices=[("Yes", "Yes"), ("No", "No")])
-    times_rest = IntegerField("If yes, how many times?", validators=[DataRequired(), Length(min=0, max=10)])
+    times_rest = IntegerField("If yes, how many times?", validators=[DataRequired(), NumberRange(min=-1, max=10)])
     tel = TelField("Caregiver/parent mobile", validators=[Optional()])
+    name = StringField("Name of the child", validators=[Optional()])
     
+    
+    def validate_tel(form, field):
+        try:
+            telephone = phonenumbers.parse(field.data)
+            if not phonenumbers.is_valid_number(telephone):
+                raise ValueError()
+        except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
+            raise ValidationError("Invalid phone number.")
+                

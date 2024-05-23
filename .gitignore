@@ -1,8 +1,11 @@
 .vscode
+.ipynb_checkpoints
 
-env
-venv
-datasets
+env/
+venv/
+datasets/
+node_modules/
+font/
 
 *.pyc
 __pycache__
