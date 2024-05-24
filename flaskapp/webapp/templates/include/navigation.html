@@ -7,9 +7,6 @@
         <li class="nav-item" data-url="{{ url_for('main.about') }}">
             About
         </li>
-        <li class="nav-item" data-url="{{ url_for('main.predict') }}">
-            Austin
-        </li>
         {% if current_user.is_anonymous %}
         <li class="nav-item" id="sign" data-url="{{ url_for('auth.login')}}">
             <span>Sign-In</span> <i class="fa fa-sign-in"></i>
@@ -24,7 +21,7 @@
                 <li class="nav-item">
                     Profile
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" data-url="{{ url_for('main.dashboard') }}">
                     Dashboard
                 </li>
                 <li class="nav-item" id="log" data-url="{{ url_for('auth.logout') }}">

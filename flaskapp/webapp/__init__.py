@@ -3,11 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_celery import Celery
+from flask_mail import Mail
 
 db = SQLAlchemy()
 migrate = Migrate()
 debug = DebugToolbarExtension()
 celery = Celery()
+email = Mail()
 
 def not_found(e):
     if request.accept_mimetypes.accept_json and not request.accept_mimetypes.accept_html:
@@ -42,6 +44,7 @@ def create_app(object):
     migrate.init_app(app, db)
     # debug.init_app(app)
     celery.init_app(app)
+    email.init_app(app)
     
     from .main import create_module as main_create_module
     from .auth import create_module as auth_create_module

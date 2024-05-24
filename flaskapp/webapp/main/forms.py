@@ -1,14 +1,14 @@
 from flask_wtf import FlaskForm
 import phonenumbers.util
 from wtforms import StringField, IntegerField, TelField, SelectField, RadioField, DecimalRangeField
-from wtforms.validators import DataRequired, Optional, Length, NumberRange, ValidationError
+from wtforms.validators import DataRequired, Optional, Length, NumberRange, ValidationError, InputRequired
 
 import phonenumbers
 
 class featuresForm(FlaskForm):
     gender = RadioField("Select Gender", validators=[DataRequired()], choices=[("Male", "Male"), ("Female", "Female")])
-    age = IntegerField("Age of the child", validators=[DataRequired()])
-    hrs_slept = IntegerField("How many hours slept?", validators=[DataRequired()])
+    age = IntegerField("Age of the child", validators=[DataRequired(), NumberRange(min=3, max=15)])
+    hrs_slept = IntegerField("How many hours slept?", validators=[DataRequired(), NumberRange(min=0, max=15)])
     leep_qty = SelectField("Sleep quality", validators=[DataRequired()],
                            choices=[(" ", "-----Select Option-----"), ("Excellent", "Excellent"),
                                     ("Good", "Good"), ("Concerning", "Concerning"), 
@@ -23,14 +23,14 @@ class featuresForm(FlaskForm):
                          choices=[(" ", "-----Select Option-----"), ("Coffee", "Coffee"), 
                                   ("Tea", "Tea"), ("Porridge", "Porridge"), ("Soft Drink", "Soft Drink"), 
                                   ("Milk", "Milk"), ("Water", "Water")])
-    temperatures = DecimalRangeField("Average temperature", validators=[DataRequired(), NumberRange(min=10.0, max=40.0)])
+    temperatures = IntegerField("Average temperature", validators=[DataRequired(), NumberRange(min=10.0, max=40.0)])
     exercise = RadioField("Involved in any form of execise?", validators=[DataRequired()],
                           choices=[('Yes', "Yes"), ("No", "No")])
     medication = RadioField("Any medication taken?", validators=[DataRequired()],
                              choices=[("Yes", "Yes"), ("No", "No")])
     visit_restroom = RadioField("Visited rest room today?", validators=[DataRequired()],
                                 choices=[("Yes", "Yes"), ("No", "No")])
-    times_rest = IntegerField("If yes, how many times?", validators=[DataRequired(), NumberRange(min=-1, max=10)])
+    times_rest = IntegerField("If yes, how many times?", validators=[InputRequired(), NumberRange(min=0, max=10)])
     tel = TelField("Caregiver/parent mobile", validators=[Optional()])
     name = StringField("Name of the child", validators=[Optional()])
     

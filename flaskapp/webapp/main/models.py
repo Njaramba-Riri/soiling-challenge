@@ -47,7 +47,8 @@ class Feedback(db.Model):
 class Reminder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime())
-    mobile = db.Column(db.String())
+    email = db.Column(db.String(64))
+    mobile = db.Column(db.String(20))
     text = db.Column(db.Text())
     
     def __repr__(self) -> str:

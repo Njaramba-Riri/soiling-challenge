@@ -2,6 +2,7 @@ import os
 import numpy as np
 from flask import (Blueprint, flash, jsonify, render_template, 
                    url_for, request, redirect, session, current_app)
+from flask_login import login_required
 
 
 from webapp import db, celery
@@ -51,21 +52,20 @@ def predict():
                                 visit_restroom=restroom, times_visited=times_rest, 
                                 caregiver=form.tel.data, child_name=form.name.data, 
                                 predicted=label, probability=probability, time=duration)
-            session['receiver'] = tel
-            session['name'] = name
-            session['time'] = duration
+            
+            session['time'] = duration            
+            if name:
+                session['name'] = name
             if tel:
+                session['receiver'] = tel
                 nofication(current_app, 
-                        receiver=tel, 
-                        sender=current_app.config['TWILIO_SENDER'], 
-                        name=name, time=duration)
-                
+                           receiver=tel, 
+                           sender=current_app.config['TWILIO_SENDER'], 
+                           name=name, time=duration)
                 reminder_time = max(duration - 5, 0)
-                reminder_notification.apply_async((tel, name, reminder_time), countdown=reminder_time*60)
+                reminder_notification.apply_async((tel, name, 5), countdown=reminder_time*60)
             db.session.add(features)
             db.session.commit()         
-            
-            flash("Your predictions are being generated", category="info")
             return redirect(url_for('main.results'))
         except Exception as e:
             db.session.rollback()
@@ -79,12 +79,16 @@ def reminder_notification(telephone, name, time):
                name=name,
                time=time)
 
-@main_blueprint.route('/results')
+@main_blueprint.route('/thanks')
 def results():
     name = session.get('name')
     time = session.get('time')
     return render_template('main/result.html', name=name, duration=time)
         
+@main_blueprint.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('main/dashboard.html')
 
 
         

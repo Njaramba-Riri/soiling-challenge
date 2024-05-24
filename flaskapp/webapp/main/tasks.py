@@ -1,33 +1,34 @@
-from webapp import celery
+import smtplib
+import logging
 from flask import current_app
+from flask_mail import Message
+
+from webapp import celery, email
 from .models import Reminder
+
+logging.basicConfig(format='%(asctime)s:%(levelname)s:%(name)s:%(message)s')
+logging.getLogger().setLevel(logging.DEBUG)
+logs = logging.getLogger(__name__)
+
 
 @celery.task()
 def log(msg):
     return msg
 
-@celery.task()
-def multiply(x, y):
-    return x * y
-
-@celery.task(bind=True, ignore_result=True, 
-             default_retry_delay=300, max_retries=5)
+@celery.task(bind=True,
+             ignore_result=True,
+             default_retry_delay=300,
+             max_retries=5)
 def remind(self, pk):
+    logs.info("Remind worker %d" % pk)
     reminder = Reminder.query.get(pk)
-
-    msg = MIMEText(reminder.text)
-    msg['Subject'] = "Your reminder"
-    msg['From'] = current_app.config['SMTP_FROM']
-    msg['To'] = reminder.email
+    msg = Message(body="Text %s" % str(reminder.text), recipients=[reminder.email], subject="Your reminder")
     try:
-        smtp_server = smtplib.SMTP(current_app.config['SMTP_SERVER'])
-        smtp_server.starttls()
-        smtp_server.login(current_app.config['SMTP_USER'],
-                          current_app.config['SMTP_PASSWORD'])
-        smtp_server.sendmail("", [reminder.email], msg.as_string())
-        smtp_server.close()
+        email.send(msg)
+        logs.info("Email sent to %s" % reminder.email)
         return
     except Exception as e:
+        logs.error(e)
         self.retry(exc=e)
 
 def on_reminder_save(mapper, connect, self):

@@ -46,7 +46,7 @@
 body{
     background: var(--navy);
     overflow-x: hidden;
-    position: relative;
+    /* position: relative; */
     font-family: var(--font-mono);
     color: var(--lightest-slate);
 }
@@ -664,6 +664,7 @@ form .ask-austin{
     justify-content: center;
     flex-direction: column;
     -webkit-box-align: center;
+    
 }
 .result h1{
     font-family: var(--font-sans);
@@ -708,14 +709,20 @@ form .ask-austin{
 
 /* ======================== Error pages ========================== */
 .errors{
-    padding: 1rem;
-    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    flex-direction: column;
     background: linear-gradient(45deg, rgba(0, 0, 0, .8), rgba(0, 0, 0, .9)), url("../images/404.jpg");
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 50px 0;
 }
 .errors .msg{
-    position: absolute;
+    /* position: absolute; */
     text-align: center;
 }
 .msg h2{

@@ -6,6 +6,7 @@ venv/
 datasets/
 node_modules/
 font/
+migrations/
 
 *.pyc
 __pycache__

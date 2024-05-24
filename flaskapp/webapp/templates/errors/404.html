@@ -4,13 +4,15 @@
 
 {% block content %}
 <section class="errors">
-    <div class="msg" id="center">
+    <div class="msg" id="cente">
         <h2>404. Not Found.</h2>
         <h3>Oooopsie, we don't serve that.</h3>
         <p>
             The resource that you're looking for couldn't be found. Maybe, just maybe, you mistyped the url.
         </p>
         <p>Think this could be an error?, contact site administrator.</p>
+
+        <a class="btn btn-lg btn-info" href="{{ url_for('main.index') }}">Back Home</a>
     </div>
 </section>
 {% endblock %}

@@ -1,4 +1,3 @@
-from typing import Union
 from flask import current_app, Flask
 
 from twilio.rest import Client
