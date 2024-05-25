@@ -14,7 +14,9 @@ class Config(ABC):
 
 class DevConfig(Config):
     SECRET_KEY = '\xd0\xb2W\x05\x11\xaf_\xc8\xb7\xdd<\x80\x9cj\x9aTv\x9c\xe6\x0b\xea\x02\x1eS'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, "soiling.db")
+    CACHE_TYPE = 'simple'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, "soiling.db") or \
+        os.environ.get('DATABASE_URL') 
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_ECHO = True
     DEBUG_TB_INTERCEPT_REDIRECTS = False

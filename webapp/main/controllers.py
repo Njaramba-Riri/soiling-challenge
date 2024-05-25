@@ -1,4 +1,5 @@
 import os 
+import logging
 import numpy as np
 from flask import (Blueprint, flash, jsonify, render_template, 
                    url_for, request, redirect, session, current_app)
@@ -12,6 +13,10 @@ from ..predict import predict_input, predict_time
 from ..notify import nofication
 
 main_blueprint = Blueprint("main", __name__)
+
+logging.basicConfig(format='%(asctime)s:%(levelname)s:%(name)s:%(message)s')
+logging.getLogger().setLevel(logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 @main_blueprint.route('/')
 def index():
@@ -40,8 +45,8 @@ def predict():
         tel = form.tel.data
         name = form.name.data
         
-        features = np.array([[gender, age, hrs_slept, sleep_qlt, food, food_amt,
-                             drink, temp, exercise, medication, restroom, times_rest]])
+        features = [gender, age, hrs_slept, sleep_qlt, food, food_amt,
+                             drink, temp, exercise, medication, restroom, times_rest]
         
         label, probability = predict_input(features)
         duration = predict_time(features)
@@ -69,7 +74,8 @@ def predict():
             return redirect(url_for('main.results'))
         except Exception as e:
             db.session.rollback()
-            flash(f"The prediction was not successful, kindly try again. {e}", category='warning')
+            logger.error(f"Error when generating prediction: {e}")
+            flash(f"The prediction was not successful, kindly try again", category='warning')
     return render_template("main/predict.html", form=form)
 
 @celery.task()
@@ -83,7 +89,8 @@ def reminder_notification(telephone, name, time):
 def results():
     name = session.get('name')
     time = session.get('time')
-    return render_template('main/result.html', name=name, duration=time)
+    tel = session.get('tel')
+    return render_template('main/result.html', name=name, duration=time, tel=tel)
         
 @main_blueprint.route('/dashboard')
 @login_required

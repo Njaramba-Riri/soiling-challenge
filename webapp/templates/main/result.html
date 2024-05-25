@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}WeLove - Prediction{% endblock %}
+
+{% block content %}
+<section class="result">
+    <div class="content">
+        <div class="prediction">
+            <h1>Hello there!</h1>
+            <p>Thank you for interacting with our app.</p>
+            {% if duration %}
+            <p>But before you go, kindly remind {% if name %}<span class="text-danger">{{ name }}</span>{% else %}the child{% endif %}
+                to take a break and visit the restroom after <span class="text-danger">{{ duration }}</span> minutes.
+                {% if tel %}A reminder SMS notification will be sent to <span class="text-danger">{{ tel }}</span> in <span class="text-danger">{{ duration - 5 }}</span> minutes.{% endif %}
+            </p>
+            {% endif %}
+            <a href="{{ url_for('.predict') }}" class="account">Submit another</a>        
+        </div>                
+        <div class="smile">
+            <figure>
+                <a href=""><img src="{{ url_for('static', filename='images/conn.jpg') }}"></a>
+                <figcaption>
+                    <h2>What's Next?</h2>
+                    <p>Help the model learn better, consequently giving you personalised predictions and recommendations.</p>
+                    <p>Log in into your account or create one if you haven't already. </p>                      
+                    <a href="{{ url_for('auth.login') }}" class="account">Create an Account</a>                     
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+{% endblock %}

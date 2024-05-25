@@ -12,8 +12,8 @@ col_names = ["client", "gender", "age", "hours_slept", "sleep_quality", "main_fo
              "temperature(deg)", "exercise", "medication", "breakfast_time", "lunch_time", "supper_time", 
              "visit_restroom", "times_visited", "avg_relieve_time(min)", "soiled"]
 
-food = ["Fruits", "Veggies", "Meat", "Chapati", "Ugali", "Rice", "Snacks"]
-drinks = ["Tea", "Porridge", "Coffee", "Soft drink", "Water", "Milk"]
+food = ["Fruits", "Githeri", "Veggies", "Meat", "Ugali", "Rice"]
+drinks = ["Tea", "Porridge", "Coffee", "Soft drink", "Water"]
 
 def generate_data(rows: int, columns: list = col_names):
     data = []
@@ -25,18 +25,16 @@ def generate_data(rows: int, columns: list = col_names):
         hrs_slept = round(random.gauss(7.0, 1.0))
         
         if hrs_slept <= 4:
-            sleep_qlt = "Fair"
+            sleep_qlt = "Concerning"
         elif hrs_slept <= 6:
             sleep_qlt = "Good"
-        elif hrs_slept <= 8:
-            sleep_qlt = "Excellent"
         else:
-            sleep_qlt = "Concerning"
+            sleep_qlt = "Excellent"
             
         food_taken = fake.word(ext_word_list=food)
         food_amount = random.choice(["Heavy", "Normal", "Small"])
         drink = fake.word(ext_word_list=drinks)
-        temp = round(random.normalvariate(20.5, 3.54), 1)
+        temp = round(random.normalvariate(18.5, 3.54), 1)
         exercise = random.choice(["Yes", "No"])
         medication = random.choice(["Yes", "No"])
         breakfast_time = random_time(datetime.strptime('08:00:00', '%H:%M:%S'),
@@ -49,11 +47,11 @@ def generate_data(rows: int, columns: list = col_names):
         if restroom == "No":
             restroom_times = 0
         else:
-            restroom_times = round(random.normalvariate(3.0, 1.0))
-            while restroom_times <= 0:
-                restroom_times = random.randint(1, 5)
+            restroom_times = random.randint(1, 5)
+            # while restroom_times <= 0:
+            #     restroom_times = random.randint(1, 5)
 
-        relieve_time = round(random.normalvariate(20.0, 2.0))
+        relieve_time = random.randint(15, 60)
         soiled = random.choice(["Yes", "No"])
         
         row_data = [client, gender, age, hrs_slept, sleep_qlt, 

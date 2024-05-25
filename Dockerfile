@@ -5,8 +5,8 @@ COPY . /app
 WORKDIR /app
 
 RUN python -m pip install pip --upgrade &&\
-    pip install -r requirements.txt 
+    pip install --no-cache-dir -r requirements.txt 
 
-EXPOSE $PORT
+EXPOSE 8080
 
-CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
+CMD ["gunicorn", "--workers=4", "--bind", "0.0.0.0:8080", "main:app"]

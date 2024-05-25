@@ -17,7 +17,7 @@
                                 {{ field(class_='input') }}
                                 {% if field.errors %}
                                     {% for e in field.errors %}
-                                        <p>{{ e }}</p>
+                                        <p class="form-error">{{ e }}</p>
                                     {% endfor %}
                                 {% endif %}
                             </div>

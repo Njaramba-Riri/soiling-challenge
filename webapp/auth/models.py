@@ -1,4 +1,5 @@
 from datetime import datetime
+from flask_login import AnonymousUserMixin
 
 from webapp import db
 from . import bcrypt
@@ -27,6 +28,19 @@ class User(db.Model):
         self.last_seen = datetime.now()
         db.session.add(self)
         
+    @property
+    def is_authenticated(self):
+        if isinstance(self, AnonymousUserMixin):
+            return False
+        return True
+    
+    @property
+    def is_anonymous(self):
+        if isinstance(self, AnonymousUserMixin):
+            return True
+        return False
+    
+    @property     
     def is_active(self):
         return True
     
