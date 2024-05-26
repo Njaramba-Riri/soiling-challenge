@@ -1,8 +1,8 @@
-FROM python:3.10.12
-
-COPY . /app
+FROM python:3.9-slim
 
 WORKDIR /app
+
+COPY . /app
 
 RUN python -m pip install pip --upgrade &&\
     pip install --no-cache-dir -r requirements.txt 
