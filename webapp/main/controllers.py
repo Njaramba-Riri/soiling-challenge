@@ -89,7 +89,7 @@ def reminder_notification(telephone, name, time):
 def results():
     name = session.get('name')
     time = session.get('time')
-    tel = session.get('tel')
+    tel = session.get('receiver')
     return render_template('main/result.html', name=name, duration=time, tel=tel)
         
 @main_blueprint.route('/dashboard')

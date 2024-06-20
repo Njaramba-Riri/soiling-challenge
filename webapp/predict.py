@@ -1,5 +1,6 @@
 import os
-import pickle 
+import pickle
+import random 
 import numpy as np
 from sklearn.base import ClassifierMixin
 
@@ -18,5 +19,6 @@ def predict_input(inputs, model: ClassifierMixin=classifier):
 
 def predict_time(inputs, model: ClassifierMixin=regressor):
     prediction = int(model.predict(inputs))
+    fake_prediction = random.randint(10, 60)
     
-    return prediction
+    return fake_prediction
